@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom'
 import React, { useEffect, useState } from 'react'
 import { css, cx } from 'linaria'
 import { openTabWithUrl } from 'common/interface'
-import { AUTH_URL, LOGOUT_URL, SET_SHORTCUTS } from 'common/constants'
+import { AUTH_URL, LOGOUT_URL, SET_SHORTCUTS, HELP_URL, CONTACT_URL, PRIVACY_URL, TERMS_URL } from 'common/constants'
 import { getSetting } from 'common/interface'
 import { COLOR_MODE_CHANGE } from 'actions'
 import { getOSModeClass } from 'common/helpers'
@@ -280,13 +280,13 @@ const OptionsApp = () => {
         <footer className={footer}>
           <div className={footerLinks}>
             <a
-              href="https://help.getpocket.com/"
+              href={HELP_URL}
               target="_blank"
               rel="noopener noreferrer">
               {chrome.i18n.getMessage('options_need_help')}
             </a>
             <a
-              href="https://getpocket.com/contact_support?field3=Question%20about%20Pocket%20Extension"
+              href={CONTACT_URL}
               target="_blank"
               rel="noopener noreferrer">
               {chrome.i18n.getMessage('options_email_us')}
@@ -323,13 +323,13 @@ const OptionsApp = () => {
               <div>
                 <span>&copy; {new Date().getFullYear()} Read It Later, Inc.</span>
                 <a
-                  href='https://getpocket.com/privacy/?src=extension'
+                  href={PRIVACY_URL}
                   rel='noopener noreferrer'
                   target='_blank'>
                   {chrome.i18n.getMessage('options_privacy')}
                 </a>
                 <a
-                  href='https://getpocket.com/tos/?src=extension'
+                  href={TERMS_URL}
                   rel='noopener noreferrer'
                   target='_blank'>
                   {chrome.i18n.getMessage('options_terms')}
