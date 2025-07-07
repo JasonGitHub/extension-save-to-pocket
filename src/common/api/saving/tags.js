@@ -1,4 +1,5 @@
 import { request } from '../_request/request'
+import { apiAdapter } from '../adapters'
 
 /* API CALLS - Should return promises
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -14,13 +15,11 @@ export function getOnSaveTags(url) {
 
 export function syncItemTags(id, tags, actionInfo) {
   return request({
-    path: 'send/',
-    data: {
-      actions: [{ action: 'tags_replace', item_id: id, tags, ...actionInfo }]
-    }
+    path: apiAdapter.getSaveEndpoint(),
+    data: apiAdapter.formatTagSyncRequest(id, tags.split(','))
   }).then(response => {
     return response
-      ? { status: 'ok', response: response.action_results[0] }
+      ? { status: 'ok', response: response.action_results?.[0] || response }
       : undefined
   })
 }

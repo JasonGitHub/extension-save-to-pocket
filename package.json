@@ -15,6 +15,9 @@
   "author": "Pocket",
   "scripts": {
     "build": "NODE_ENV=production rollup -c",
+    "build:pocket": "node scripts/build-for-service.js pocket && npm run build",
+    "build:readlater": "node scripts/build-for-service.js readlater && npm run build",
+    "configure": "node scripts/build-for-service.js",
     "release": "cross-env NODE_ENV=production IS_RELEASE=true rollup -c",
     "start": "rollup -c -w",
     "test": "jest",

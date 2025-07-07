@@ -2,6 +2,7 @@
   "manifest_version": 3,
   "name": "Save to Pocket",
   "default_locale": "en",
+  "description": "The easiest, fastest way to capture articles, videos, and more.",
   "icons": {
     "16": "assets/images/icon-16.png",
     "48": "assets/images/icon-48.png",

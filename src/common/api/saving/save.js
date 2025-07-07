@@ -1,24 +1,13 @@
 import { request } from '../_request/request'
+import { apiAdapter } from '../adapters'
 
 /* API CALLS - Should return promises
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 export function saveToPocket(saveObject) {
   return request({
-    path: 'send/',
-    data: {
-      actions: [
-        {
-          action: 'add',
-          url: saveObject.url,
-          title: saveObject.title,
-          ...saveObject.actionInfo,
-          ...saveObject.additionalParams
-        }
-      ]
-    }
+    path: apiAdapter.getSaveEndpoint(),
+    data: apiAdapter.formatSaveRequest(saveObject)
   }).then(response => {
-    return response
-      ? { saveObject, status: 'ok', response: response.action_results[0] }
-      : undefined
+    return apiAdapter.formatSaveResponse(response, saveObject)
   })
 }

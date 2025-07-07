@@ -1,4 +1,5 @@
 import { getSetting } from './interface'
+import { CONFIG } from './config'
 
 export function isSystemPage(tab) {
   return tab.active && isSystemLink(tab.url)
@@ -22,7 +23,7 @@ export function checkDuplicate(list, tagValue) {
 
 export function closeLoginPage() {
   chrome.tabs.query(
-    { url: '*://getpocket.com/extension_login_success*' },
+    { url: `*://${CONFIG.BASE_DOMAIN}/extension_login_success*` },
     (tabs) => {
       chrome.tabs.remove(tabs.map((tab) => tab.id))
     },
